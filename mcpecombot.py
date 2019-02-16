@@ -27,6 +27,7 @@ async def on_message_delete(message):
 @client.command()
 async def ping ():
     await client.say('Pong!')
+    await client.process_commands(message)
 
 @client.command()
 async def echo(*args):
@@ -35,5 +36,15 @@ async def echo(*args):
         output += word
         output += ' '
     await client.say(output)
+    await client.process_commands(message)
+
+@client.command(pass_context=True)
+async def clear(ctx, amount=50):
+    channel = ctx.message.channel
+    message = []
+    async for message in client.logs from(channel, limit-int(amount) + 1):
+        message.append(message)
+    await client.delete_message(message)
+    await client.say('Messages have been deleted')
 
 client.run(TOKEN)
