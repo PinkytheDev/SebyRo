@@ -37,14 +37,5 @@ async def echo(*args):
         output += ' '
     await client.say(output)
     await client.process_commands(message)
-
-@client.command(pass_context=True)
-async def clear(ctx, amount=50):
-    channel = ctx.message.channel
-    message = []
-    async for message in client.logs from(channel, (limit-int(amount) + 1):
-        messages.append(message)
-    await client.delete_messages(messages)
-    await client.say("{} Messages Deleted.".format(int(amount))
-
+    
     client.run(TOKEN)
