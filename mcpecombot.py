@@ -9,4 +9,10 @@ client = commands.Bot(command_prefix = '?')
 async def on_ready():
     print ('Logged in')
 
+@client.event
+async def on_message(message):
+    author = message.author
+    content = message.content
+    print('{}: {}'.format(author, content))
+
 client.run(TOKEN)
