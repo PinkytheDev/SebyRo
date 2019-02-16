@@ -22,4 +22,10 @@ async def on_message_delete(message):
     channel = message.channel
     await client.send_message(channel, '{}: {}'.format(author, content))
 
+@client.event
+async def on_message(message):
+    channel = message.channel
+    if message.content.startswith('?ping'):
+        await client.send_message(channel, 'Pong!')
+
 client.run(TOKEN)
