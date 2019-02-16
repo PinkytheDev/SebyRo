@@ -28,4 +28,12 @@ async def on_message(message):
     if message.content.startswith('?ping'):
         await client.send_message(channel, 'Pong!')
 
+    if message.content.startswith('?echo'):
+        msg = message.content.split()
+        output = ''
+        for word in msg[1:]:
+            output += word
+            output += ' '
+        await client.send_message(channel, output)
+
 client.run(TOKEN)
