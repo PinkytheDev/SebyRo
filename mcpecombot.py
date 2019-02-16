@@ -37,5 +37,5 @@ async def echo(*args):
         output += ' '
     await client.say(output)
     await client.process_commands(message)
-    
+
     client.run(TOKEN)
