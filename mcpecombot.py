@@ -36,6 +36,5 @@ async def echo(*args):
         output += word
         output += ' '
     await client.say(output)
-    await client.process_commands(message)
 
     client.run(TOKEN)
