@@ -28,7 +28,7 @@ async def on_message_delete(message):
 async def ping ():
     await client.say('Pong!')
 
-@client.command():
+@client.command()
 async def echo(*args):
     output = ''
     for word in args:
