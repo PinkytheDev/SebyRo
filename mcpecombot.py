@@ -5,7 +5,7 @@ import datetime
 
 client = commands.Bot(command_prefix=".")
 
-TOKEN = "NDY0ODMxMzI4MjYxNjM2MDk2.DiE2YQ.j3jTWdwAJ8WVZPCSXVUKBG3-vu0"
+TOKEN = "NTQ2MzMxNjEzNTc5OTY4NTMw.D1FA-g.sKso2nlghK9a4YyP1oY2ak8NqZo"
 
 
 @client.event
