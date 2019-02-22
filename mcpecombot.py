@@ -1,20 +1,27 @@
 import discord
 from discord.ext import commands
 
-TOKEN = 'NTQ2MzMxNjEzNTc5OTY4NTMw.D0nDDQ.tjiYDDBG-zZoApoD_PAmzt0GKQw'
+import datetime
 
-client = commands.Bot(command_prefix = '?')
+client = commands.Bot(command_prefix=".")
+
+TOKEN = "NDY0ODMxMzI4MjYxNjM2MDk2.DiE2YQ.j3jTWdwAJ8WVZPCSXVUKBG3-vu0"
+
 
 @client.event
 async def on_ready():
-    print ('Logged in')
+    print("Logged in as")
+    print(client.user.name)
+    print("---------------")
+
 
 @client.event
 async def on_message(message):
-    author = message.author
-    content = message.content
-    print('{}: {}'.format(author, content))
+    user = message.author
+    msg = message.content
+    print(f"{user} : {msg}")
     await client.process_commands(message)
+
 
 @client.event
 async def on_message_delete(message):
@@ -24,10 +31,12 @@ async def on_message_delete(message):
     await client.send_message(channel, '{}: {}'.format(author, content))
     await client.process_commands(message)
 
+
 @client.command()
-async def ping ():
+async def ping():
     await client.say('Pong!')
     await client.process_commands(message)
+
 
 @client.command()
 async def echo(*args):
@@ -38,4 +47,24 @@ async def echo(*args):
     await client.say(output)
     await client.process_commands(message)
 
-    client.run(TOKEN)
+
+@client.command()
+async def embed(ctx):
+    embed = discord.Embed(title="Title", description="Description", colour=discord.Color.green(),
+                          url="https://www.google.com")
+
+    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
+    embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
+    embed.set_image(url="https://discordpy.readthedocs.io/en/rewrite/_images/snake.png")
+    embed.set_thumbnail(url="https://www.python.org/static/img/python-logo.png")
+
+    embed.add_field(name="Field 1", value="value 1")
+    embed.add_field(name="Field 2", value="value 2")
+
+    embed.add_field(name="Field 3", value="value 3", inline=False)
+    embed.add_field(name="Field 4", value="value 4")
+
+    await ctx.send(embed=embed)
+
+
+client.run(TOKEN)
