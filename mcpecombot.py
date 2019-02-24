@@ -1,4 +1,5 @@
 import discord
+from discord import Game
 from discord.ext import commands
 
 import datetime
@@ -10,6 +11,7 @@ TOKEN = "NTQ2MzMxNjEzNTc5OTY4NTMw.D1FA-g.sKso2nlghK9a4YyP1oY2ak8NqZo"
 
 @client.event
 async def on_ready():
+    await client.change_presence (game=Game (name="Give me the giveaway reward. SebyRo299") )
     print("Logged in as")
     print(client.user.name)
     print("---------------")
