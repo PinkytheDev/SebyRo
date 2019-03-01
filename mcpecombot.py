@@ -52,21 +52,18 @@ async def echo(*args):
 
 @client.command()
 async def embed(ctx):
-    embed = discord.Embed(title="Title", description="Description", colour=discord.Color.green(),
-                          url="https://www.google.com")
-
-    embed.set_author(name=client.user.name, icon_url=client.user.avatar_url)
-    embed.set_footer(text=ctx.author.name, icon_url=ctx.author.avatar_url)
-    embed.set_image(url="https://discordpy.readthedocs.io/en/rewrite/_images/snake.png")
-    embed.set_thumbnail(url="https://www.python.org/static/img/python-logo.png")
-
-    embed.add_field(name="Field 1", value="value 1")
-    embed.add_field(name="Field 2", value="value 2")
-
-    embed.add_field(name="Field 3", value="value 3", inline=False)
-    embed.add_field(name="Field 4", value="value 4")
-
-    await ctx.send(embed=embed)
-
+    await client.say('Sorry failed. TROLOLOLOL')
+    await client.process_commands(message)
+    
+    
+@client.command(pass_context=True, adminstrator=True)
+async def clear(ctx, amount=100):
+    channel = ctx.message.channel
+    messages = []
+    async for message in client.logs_from(channel, limit=int(amount) + 1):
+        messages.append(message)
+    await client.delete_messages(messages)
+    await client.say("{} Messages Deleted.".format(int(amount))
+    await client.process_commands(message)
 
 client.run(TOKEN)
