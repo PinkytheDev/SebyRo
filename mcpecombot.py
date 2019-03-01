@@ -56,7 +56,7 @@ async def embed(ctx):
     await client.process_commands(message)
     
     
-@client.command(pass_context=True, adminstrator=True)
+@client.command(pass_context=True)
 async def clear(ctx, amount=100):
     channel = ctx.message.channel
     messages = []
